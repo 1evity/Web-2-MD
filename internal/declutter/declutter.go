@@ -25,5 +25,12 @@ func DeclutterHTML(htmlFile string) (string, error) {
 
 	// Create a new goja vm
 	vm := goja.New()
+
+	// Insert the HTML content into the virtual machine as a global scope variable
+	if err := vm.Set("htmlContent", string(htmlContent)); err != nil {
+		fmt.Println("failed to set HTML content into VM: %v", err)
+	}
+
+
 }
 
