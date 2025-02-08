@@ -28,7 +28,7 @@ func DeclutterHTML(htmlFile string) (string, error) {
 
 	// Insert the HTML content into the virtual machine as a global scope variable
 	if err := vm.Set("htmlContent", string(htmlContent)); err != nil {
-		fmt.Println("failed to set HTML content into VM: %v", err)
+		return "", fmt.Println("failed to set HTML content into VM: %v", err)
 	}
 
 	// Define the JavaScript code
@@ -40,6 +40,14 @@ func DeclutterHTML(htmlFile string) (string, error) {
         article.content;
 	`
 
+	// Execute the JS code
+	result, err := vm.RunString(script)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse HTML with readability.js: %v", err)
+	}
 
+	// Return the decluttered HTML content
+	declutteredHTML := result.String()
+	return declutteredHTML, nil
 }
 
