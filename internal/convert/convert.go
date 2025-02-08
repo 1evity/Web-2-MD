@@ -12,4 +12,9 @@ func ConvertToMarkdown(htmlContent string) string {
 	extensions := parser.CommonExtensions | parser.AutoHeadingIDs
 	p := parser.NewWithExtensions(extensions)
 	tdoc := p.Parse([]byte(htmlContent))
+
+	// Render Markdown
+	htmlFlags := html.CommonFlags | html.HrefTargetBlank
+	opts := html.RendererOptions{Flags: htmlFlags}
+	renderer := html.NewRenderer(opts)
 }
