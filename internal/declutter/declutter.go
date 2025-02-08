@@ -23,6 +23,7 @@ func DeclutterHTML(htmlFile string) (string, error) {
 		return "", fmt.Errorf("failed to import readability.js: %v", err)
 	}
 
-	
+	// Create a new goja vm
+	vm := goja.New()
 }
 
