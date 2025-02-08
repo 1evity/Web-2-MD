@@ -31,6 +31,15 @@ func DeclutterHTML(htmlFile string) (string, error) {
 		fmt.Println("failed to set HTML content into VM: %v", err)
 	}
 
+	// Define the JavaScript code
+	script := `
+		const { JSDOM } = require('jsdom');
+        const dom = new JSDOM(htmlContent);
+        const reader = new Readability(dom.window.document);
+        const article = reader.parse();
+        article.content;
+	`
+
 
 }
 
