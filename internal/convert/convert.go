@@ -17,4 +17,7 @@ func ConvertToMarkdown(htmlContent string) string {
 	htmlFlags := html.CommonFlags | html.HrefTargetBlank
 	opts := html.RendererOptions{Flags: htmlFlags}
 	renderer := html.NewRenderer(opts)
+
+	// Return Markdown
+	return string(markdown.Render(doc, renderer))
 }
