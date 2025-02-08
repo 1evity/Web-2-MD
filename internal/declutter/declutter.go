@@ -15,5 +15,14 @@ func DeclutterHTML(htmlFile string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to read HTML file: %v", err)
 	}
+
+	// Read the readability.js script
+	readability, err := ioutil.ReadFile("./scripts/readability/readability.js")
+	fmt.Println("importing readability.js library ...")
+	if err != nil {
+		return "", fmt.Errorf("failed to import readability.js: %v", err)
+	}
+
+	
 }
 
