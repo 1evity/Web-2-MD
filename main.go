@@ -6,5 +6,13 @@ import (
     "log"
     "./internal/declutter"
     "./internal/convert"
+	"./internal/save"
 )
 
+func main() {
+	// Check command-line arguments
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: w2md <link-to-webpage>")
+		os.Exit(1)
+	}
+}
