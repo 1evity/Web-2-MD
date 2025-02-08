@@ -15,4 +15,8 @@ func main() {
 		fmt.Println("Usage: w2md <link-to-webpage>")
 		os.Exit(1)
 	}
+
+	// Input webpage URL
+	pageURL := os.Args[1]
+	
 }
